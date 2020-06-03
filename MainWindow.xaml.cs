@@ -52,15 +52,16 @@ namespace PronunDLWPF
             fd.DefaultExt = "*.*";
             if (fd.ShowDialog() == true)
             {
-                fn = fd.FileName;
-                txtifile.Text = fn;
+                vm.Fn = fd.FileName;
             }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-           // Engine.fntreat(fn);
-            fntreat(txtifile.Text);
+            // Engine.fntreat(fn);
+            doneBtn.IsEnabled = false;
+            fntreat(vm.Fn);
+
         }
 
         public class processViewModel : INotifyPropertyChanged
@@ -68,6 +69,23 @@ namespace PronunDLWPF
             private string status;
             private string progress;
             private int barProgress;
+            private string fn;
+
+            public string Fn
+            {
+                get
+                {
+                    return this.fn;
+                }
+                set
+                {
+                    this.fn = value;
+                    NotifyPropertyChanged("Fn");
+                }
+            }
+
+
+
 
 
             public string Status
@@ -156,6 +174,7 @@ namespace PronunDLWPF
             vm.Status = "Writing data in file";
             LoadFileData.writeData();
             vm.Status= "Complete";
+            doneBtn.IsEnabled = true;
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -173,16 +192,12 @@ namespace PronunDLWPF
 
         private void Window_Drop(object sender, DragEventArgs e)
         {
-            txtifile.Text = string.Empty; // テキストボックスを空にする。
+            vm.Fn = string.Empty; // テキストボックスを空にする。
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop); // ドロップされたものがFileDrop形式の場合は、各ファイルのパス文字列を文字列配列に格納する。
             if (files != null)
             {
-
-                txtifile.Text = files[0];// パス文字列からファイル名を抜き出して、テキストボックスにファイル名を書き込む。
-                
-                
+                vm.Fn = files[0];// パス文字列からファイル名を抜き出して、テキストボックスにファイル名を書き込む。
             }
-
         }
     }
 

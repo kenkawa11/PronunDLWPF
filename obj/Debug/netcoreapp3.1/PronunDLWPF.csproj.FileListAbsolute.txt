@@ -17,3 +17,7 @@ C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\PronunDLWPF.cs
 C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\PronunDLWPF.dll
 C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\PronunDLWPF.pdb
 C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\PronunDLWPF.genruntimeconfig.cache
+C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\MaterialDesignColors.dll
+C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\MaterialDesignThemes.Wpf.dll
+C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\App.baml
+C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\PronunDLWPF.csproj.CopyComplete
