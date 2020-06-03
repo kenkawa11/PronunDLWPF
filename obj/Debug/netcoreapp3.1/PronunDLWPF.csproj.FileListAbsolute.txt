@@ -19,5 +19,9 @@ C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\PronunDLWPF.pd
 C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\PronunDLWPF.genruntimeconfig.cache
 C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\MaterialDesignColors.dll
 C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\MaterialDesignThemes.Wpf.dll
-C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\App.baml
 C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\PronunDLWPF.csproj.CopyComplete
+C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\ControlzEx.dll
+C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\MahApps.Metro.dll
+C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\MaterialDesignThemes.MahApps.dll
+C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\Microsoft.Xaml.Behaviors.dll
+C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\System.Text.Json.dll
