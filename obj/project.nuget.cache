@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "zNprE0VRNrvPLKWwZyGH2ogJ/GKu20F2ORj6xIRBE530khjdeDDCCL0RjrHP0e8/CxsVWOslX9Dkfo0d9EVOHw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\naobaby\\source\\repos\\PronunDLWPF\\PronunDLWPF.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\naobaby\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}
