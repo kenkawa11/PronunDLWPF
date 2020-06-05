@@ -13,7 +13,6 @@ C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\MainWindow.bam
 C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\PronunDLWPF.g.resources
 C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\PronunDLWPF.AssemblyInfoInputs.cache
 C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\PronunDLWPF.AssemblyInfo.cs
-C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\PronunDLWPF.csproj.CoreCompileInputs.cache
 C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\PronunDLWPF.dll
 C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\PronunDLWPF.pdb
 C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\PronunDLWPF.genruntimeconfig.cache
@@ -25,3 +24,6 @@ C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\MahApps.Metro.
 C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\MaterialDesignThemes.MahApps.dll
 C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\Microsoft.Xaml.Behaviors.dll
 C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\Microsoft.WindowsAPICodePack.ShellExtensions.dll
+C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\PronunDLWPF.csproj.CoreCompileInputs.cache

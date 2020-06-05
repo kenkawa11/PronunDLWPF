@@ -25,6 +25,7 @@ using System.Runtime.CompilerServices;
 using System.Diagnostics;
 using System.Security.Policy;
 using PronunEngine;
+using MSAPI = Microsoft.WindowsAPICodePack;
 
 namespace PronunDLWPF
 {
@@ -200,6 +201,24 @@ namespace PronunDLWPF
             {
                 vm.Fn = files[0];// パス文字列からファイル名を抜き出して、テキストボックスにファイル名を書き込む。
             }
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            var dlg = new MSAPI::Dialogs.CommonOpenFileDialog();
+
+            // フォルダ選択ダイアログ（falseにするとファイル選択ダイアログ）
+            dlg.IsFolderPicker = true;
+            // タイトル
+            dlg.Title = "フォルダを選択してください";
+            // 初期ディレクトリ
+            dlg.InitialDirectory = @"D:\Work";
+
+            if (dlg.ShowDialog() == MSAPI::Dialogs.CommonFileDialogResult.Ok)
+            {
+                MessageBox.Show($"{dlg.FileName}が選択されました。");
+            }
+
         }
     }
 
