@@ -157,7 +157,9 @@ namespace PronunDLWPF
 
                 num_treat = num_treat + 1;
                 vm.BarProgress = num_treat*100 / num_gross ;
-                vm.Progress = $"{num_treat} in {num_gross}";
+                vm.Progress = $"{vm.BarProgress}%";
+
+                //vm.Progress = $"{num_treat} in {num_gross}";
 
 
                 if (isCancel)
