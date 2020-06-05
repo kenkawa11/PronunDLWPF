@@ -205,19 +205,7 @@ namespace PronunDLWPF
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            var dlg = new MSAPI::Dialogs.CommonOpenFileDialog();
 
-            // フォルダ選択ダイアログ（falseにするとファイル選択ダイアログ）
-            dlg.IsFolderPicker = true;
-            // タイトル
-            dlg.Title = "フォルダを選択してください";
-            // 初期ディレクトリ
-            dlg.InitialDirectory = @"D:\Work";
-
-            if (dlg.ShowDialog() == MSAPI::Dialogs.CommonFileDialogResult.Ok)
-            {
-                MessageBox.Show($"{dlg.FileName}が選択されました。");
-            }
 
         }
     }
