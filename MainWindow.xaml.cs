@@ -59,101 +59,9 @@ namespace PronunDLWPF
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            // Engine.fntreat(fn);
             doneBtn.IsEnabled = false;
             fntreat();
-
         }
-
-        public class processViewModel : INotifyPropertyChanged
-        {
-            private string status;
-            private string progress;
-            private int barProgress;
-            private string fn;
-            private string dir;
-
-            public string Fn
-            {
-                get
-                {
-                    return this.fn;
-                }
-                set
-                {
-                    this.fn = value;
-                    NotifyPropertyChanged("Fn");
-                }
-            }
-
-            public string Dir
-            {
-                get
-                {
-                    return this.dir;
-                }
-                set
-                {
-                    this.dir = value;
-                    NotifyPropertyChanged("Dir");
-                }
-            }
-
-
-
-
-
-            public string Status
-            {
-                get
-                {
-                    return this.status;
-                }
-                set
-                {
-                    this.status = value;
-                    NotifyPropertyChanged("Status");
-                }
-            }
-
-            public string Progress
-            {
-                get
-                {
-                    return this.progress;
-                }
-                set
-                {
-                    this.progress = value;
-                    NotifyPropertyChanged("Progress");
-
-                }
-            }
-
-            public int BarProgress
-            {
-                get
-                {
-                    return this.barProgress;
-                }
-                set
-                {
-                    this.barProgress = value;
-                    NotifyPropertyChanged("BarProgress");
-
-                }
-            }
-            public event PropertyChangedEventHandler PropertyChanged;
-            private void NotifyPropertyChanged(String info)
-            {
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs(info));
-                }
-            }
-        }
-
-
 
         public async void fntreat()
         {
@@ -205,8 +113,6 @@ namespace PronunDLWPF
             e.Handled = e.Data.GetDataPresent(DataFormats.FileDrop);
         }
 
-
-
         private void Window_Drop(object sender, DragEventArgs e)
         {
             vm.Fn = string.Empty; // テキストボックスを空にする。
@@ -232,7 +138,7 @@ namespace PronunDLWPF
             if (dlg.ShowDialog() == MSAPI::Dialogs.CommonFileDialogResult.Ok)
             {
                 vm.Dir = dlg.FileName+@"\";
-                MessageBox.Show($"{dlg.FileName}が選択されました。");
+                //MessageBox.Show($"{dlg.FileName}が選択されました。");
             }
         }
     }
