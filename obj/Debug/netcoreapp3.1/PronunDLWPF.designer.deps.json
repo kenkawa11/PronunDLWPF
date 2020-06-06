@@ -61,6 +61,14 @@
           }
         }
       },
+      "Microsoft.WindowsAPICodePack-Core/1.1.0.2": {
+        "runtime": {
+          "lib/Microsoft.WindowsAPICodePack.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.0.0"
+          }
+        }
+      },
       "Microsoft.WindowsAPICodePack-Shell/1.1.0": {
         "runtime": {
           "lib/Microsoft.WindowsAPICodePack.Shell.dll": {
@@ -126,6 +134,13 @@
       "sha512": "sha512-wuFaLzbCgRDce9n186cJgxoMtooB7hIL1VsGufM9hLZnrDgZ+5N5KOo6nI9hkkj77PTgfjcoZXS4zUqfca0ZGw==",
       "path": "materialdesignthemes.mahapps/0.1.4",
       "hashPath": "materialdesignthemes.mahapps.0.1.4.nupkg.sha512"
+    },
+    "Microsoft.WindowsAPICodePack-Core/1.1.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rfcfF2KwFVLt/zAaJfkqFPk/WPRAgFIamvGw+SSC0lYWNKMT+hTtIcNNifc/ZFDmoozYtldDgrHsj4qbsLQZtQ==",
+      "path": "microsoft.windowsapicodepack-core/1.1.0.2",
+      "hashPath": "microsoft.windowsapicodepack-core.1.1.0.2.nupkg.sha512"
     },
     "Microsoft.WindowsAPICodePack-Shell/1.1.0": {
       "type": "package",

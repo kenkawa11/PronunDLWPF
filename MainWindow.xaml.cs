@@ -34,7 +34,6 @@ namespace PronunDLWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string fn;
         //public static HttpClient client = new HttpClient();
         Boolean isCancel;
         public processViewModel vm=new processViewModel();
@@ -43,6 +42,7 @@ namespace PronunDLWPF
         {
             InitializeComponent();
             this.DataContext = vm;
+            vm.Dir= @"C:\Users\naobaby\Desktop\test\";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -61,7 +61,7 @@ namespace PronunDLWPF
         {
             // Engine.fntreat(fn);
             doneBtn.IsEnabled = false;
-            fntreat(vm.Fn);
+            fntreat();
 
         }
 
@@ -71,6 +71,7 @@ namespace PronunDLWPF
             private string progress;
             private int barProgress;
             private string fn;
+            private string dir;
 
             public string Fn
             {
@@ -82,6 +83,19 @@ namespace PronunDLWPF
                 {
                     this.fn = value;
                     NotifyPropertyChanged("Fn");
+                }
+            }
+
+            public string Dir
+            {
+                get
+                {
+                    return this.dir;
+                }
+                set
+                {
+                    this.dir = value;
+                    NotifyPropertyChanged("Dir");
                 }
             }
 
@@ -141,18 +155,18 @@ namespace PronunDLWPF
 
 
 
-        public async void fntreat(string rfn)
+        public async void fntreat()
         {
             //label1.Content = "Processing";
             vm.Status = "Processing";
-            var LoadFileData = new fileData(rfn);
+            var LoadFileData = new fileData(vm.Fn);
             var num_treat = 0;
             var num_gross = LoadFileData.Fdata.Count;
             var linedata = new ID_data();
             foreach (var values in LoadFileData.Fdata)
             {
                 linedata.Line = values;
-                values[3] = linedata.treatMp3();
+                values[3] = linedata.treatMp3(vm.Dir);
 
                 values[4] = linedata.treatSym();
 
@@ -205,12 +219,21 @@ namespace PronunDLWPF
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
+            var dlg = new MSAPI::Dialogs.CommonOpenFileDialog();
+
+            // フォルダ選択ダイアログ（falseにするとファイル選択ダイアログ）
+            dlg.IsFolderPicker = true;
+            // タイトル
+            dlg.Title = "フォルダを選択してください";
+            // 初期ディレクトリ
+            dlg.InitialDirectory = @"C:\Work";
 
 
+            if (dlg.ShowDialog() == MSAPI::Dialogs.CommonFileDialogResult.Ok)
+            {
+                vm.Dir = dlg.FileName+@"\";
+                MessageBox.Show($"{dlg.FileName}が選択されました。");
+            }
         }
     }
-
-
-
-
 }

@@ -26,4 +26,5 @@ C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\Microsoft.Xaml
 C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\Microsoft.WindowsAPICodePack.Shell.dll
 C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\Microsoft.WindowsAPICodePack.ShellExtensions.dll
+C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\Microsoft.WindowsAPICodePack.dll
 C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\PronunDLWPF.csproj.CoreCompileInputs.cache

@@ -18,6 +18,7 @@ namespace PronunEngine
 {
     public class dic
     {
+
         public static string outbase = @"C:\Users\naobaby\Desktop\test\";
         public static HttpClient client = new HttpClient();
         public string url { get; set; }
@@ -29,10 +30,10 @@ namespace PronunEngine
             ptn = b;
         }
 
-        public static async void get_mp3(string url_mp3, string fn)
+        public static async void get_mp3(string url_mp3, string outpath)
         {
             HttpResponseMessage res = await client.GetAsync(url_mp3);
-            var outputPath = outbase + fn + ".mp3";
+            var outputPath = outpath + ".mp3";
             using (var fileStream = File.Create(outputPath))
             {
                 using (var httpStream = await res.Content.ReadAsStreamAsync())
@@ -45,7 +46,7 @@ namespace PronunEngine
 
 
 
-        public string DownLoadMp3(string w, string ID)
+        public string DownLoadMp3(string w, string outpath)
         {
             var bodyUrl = url + w;
             var url_mp3 = get_body(bodyUrl, ptn).Result;
@@ -58,7 +59,7 @@ namespace PronunEngine
             {
                 url_mp3 = url_mp3.Substring(0, url_mp3.Length - 1);
             }
-            get_mp3(url_mp3, ID);
+            get_mp3(url_mp3, outpath);
             return "1";
         }
 
@@ -127,21 +128,22 @@ namespace PronunEngine
 
 
 
-        public string treatMp3()
+        public string treatMp3(string dir)
         {
             if(line[3]=="n")
             {
                 var target_word = line[2];
                 target_word = target_word.Trim().Replace(" ", "+");
-                if (oxford.DownLoadMp3(target_word, line[0]) != "0")
+                var outpath = dir + line[0];
+                if (oxford.DownLoadMp3(target_word, outpath) != "0")
                 {
                     return "A";
                 }
-                if (longman.DownLoadMp3(target_word, line[0]) != "0")
+                if (longman.DownLoadMp3(target_word, outpath) != "0")
                 {
                     return "A";
                 }
-                if (weblio.DownLoadMp3(target_word, line[0]) != "0")
+                if (weblio.DownLoadMp3(target_word, outpath) != "0")
                 {
                     return "A";
                 }
