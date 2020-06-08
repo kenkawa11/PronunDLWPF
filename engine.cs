@@ -33,7 +33,7 @@ namespace PronunEngine
         public static async void get_mp3(string url_mp3, string outpath)
         {
             HttpResponseMessage res = await client.GetAsync(url_mp3);
-            var outputPath = outpath + ".mp3";
+            var outputPath = outpath;
             using (var fileStream = File.Create(outputPath))
             {
                 using (var httpStream = await res.Content.ReadAsStreamAsync())
@@ -134,18 +134,19 @@ namespace PronunEngine
             {
                 var target_word = line[2];
                 target_word = target_word.Trim().Replace(" ", "+");
-                var outpath = dir + line[0];
+                //var outpath = dir + line[0]+".mp3";
+                var outpath = dir + target_word+".mp3";
                 if (oxford.DownLoadMp3(target_word, outpath) != "0")
                 {
-                    return "A";
+                    return target_word + ".mp3";
                 }
                 if (longman.DownLoadMp3(target_word, outpath) != "0")
                 {
-                    return "A";
+                    return target_word + ".mp3";
                 }
                 if (weblio.DownLoadMp3(target_word, outpath) != "0")
                 {
-                    return "A";
+                    return target_word + ".mp3";
                 }
                 return "n";
             }
