@@ -132,7 +132,7 @@ namespace PronunEngine
         {
             var target_word = line[2];
             target_word = target_word.Trim().Replace(" ", "+");
-            line[0] = "TKW-" + target_word;
+            line[0] = "TRKW-" + target_word;
 
             if (line[3]=="n")
             {
