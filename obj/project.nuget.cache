@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2C20zAec2E1nH9Llo4Du4Lz5N5PjgJT0tgv7sASw/lac79vlC/ltVvf4Qoc8n3Rjyce5tl+US+h297/vFz5ZEQ==",
+  "dgSpecHash": "O8TifHv9Fi5kkhRHSOHpsXMrJF/uB2FSYPgUxDi61R6LfaUlFMkaYMT+yoeWWyR0jyQTJnmvr+xJNbNO1+K0aw==",
   "success": true,
   "projectFilePath": "C:\\Users\\naobaby\\source\\repos\\PronunDLWPF\\PronunDLWPF.csproj",
   "expectedPackageFiles": [
@@ -12,8 +12,7 @@
     "C:\\Users\\naobaby\\.nuget\\packages\\microsoft.windowsapicodepack-core\\1.1.0.2\\microsoft.windowsapicodepack-core.1.1.0.2.nupkg.sha512",
     "C:\\Users\\naobaby\\.nuget\\packages\\microsoft.windowsapicodepack-shell\\1.1.0\\microsoft.windowsapicodepack-shell.1.1.0.nupkg.sha512",
     "C:\\Users\\naobaby\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.19\\microsoft.xaml.behaviors.wpf.1.1.19.nupkg.sha512",
-    "C:\\Users\\naobaby\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512",
-    "C:\\Users\\naobaby\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+    "C:\\Users\\naobaby\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512"
   ],
   "logs": [
     {

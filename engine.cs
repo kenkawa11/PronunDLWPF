@@ -19,7 +19,7 @@ namespace PronunEngine
     public class dic
     {
 
-        public static string outbase = @"C:\Users\naobaby\Desktop\test\";
+        //public static string outbase = @"C:\Users\naobaby\Desktop\test\";
         public static HttpClient client = new HttpClient();
         public string url { get; set; }
         public string ptn { get; set; }
@@ -130,10 +130,12 @@ namespace PronunEngine
 
         public string treatMp3(string dir)
         {
-            if(line[3]=="n")
+            var target_word = line[2];
+            target_word = target_word.Trim().Replace(" ", "+");
+            line[0] = "TKW-" + target_word;
+
+            if (line[3]=="n")
             {
-                var target_word = line[2];
-                target_word = target_word.Trim().Replace(" ", "+");
                 var outpath = dir + line[0];
                 if (oxford.DownLoadMp3(target_word, outpath) != "0")
                 {
