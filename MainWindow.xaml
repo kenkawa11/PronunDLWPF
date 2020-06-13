@@ -33,15 +33,14 @@
             <RowDefinition Height="57*"/>
         </Grid.RowDefinitions>
 
-        <Button Content="Select file" HorizontalAlignment="Left" Height="40" Margin="93,0,0,0" VerticalAlignment="Center" Width="120" Click="Button_Click" FontFamily="Arial Black" FontSize="16" Grid.Column="2" Grid.Row="1"/>
+        <Button Content="Select file" Command="{Binding BtnFile}" HorizontalAlignment="Left" Height="40" Margin="93,0,0,0" VerticalAlignment="Center" Width="120" FontFamily="Arial Black" FontSize="16" Grid.Column="2" Grid.Row="1"/>
         <TextBox x:Name="txtifile" Text="{Binding Fn}" HorizontalAlignment="Left" Height="40" Margin="15,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="300" Grid.ColumnSpan="3" Background="#FFEFF6F7" Grid.Row="1" />
-        <Button x:Name="doneBtn" Content="Done" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="100" Click="Button_Click_1" FontSize="16" FontFamily="Arial Black" Grid.Row="2" RenderTransformOrigin="0.462,-1.489" Margin="50,6,0,0" Grid.Column="1"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Height="40" Margin="45,6,0,0" VerticalAlignment="Top" Width="130" Click="Button_Click_2" FontSize="16" FontFamily="Arial Black" Grid.Row="2" Grid.Column="2"/>
+        <Button x:Name="doneBtn" Command="{Binding Readprocess}" IsEnabled="{Binding IsActiveDone}" Content="Done" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="100"  FontSize="16" FontFamily="Arial Black" Grid.Row="2" RenderTransformOrigin="0.462,-1.489" Margin="40,5,0,0" Grid.Column="1"/>
+        <Button Content="Cancel" Command="{Binding Cancel}" HorizontalAlignment="Left" Height="40" Margin="45,6,0,0" VerticalAlignment="Top" Width="130" FontSize="16" FontFamily="Arial Black" Grid.Row="2" Grid.Column="2"/>
         <Label x:Name="label1" Content="{Binding Status}" HorizontalAlignment="Left" Height="35" Margin="150,0,0,0" VerticalAlignment="Center" Width="152" RenderTransformOrigin="0.781,1.001" Grid.Row="4" FontFamily="Arial Black" FontSize="20" Grid.ColumnSpan="2" Grid.Column="1"/>
         <Label x:Name="label2" Content="{Binding Progress}" HorizontalAlignment="Left" Height="35" Margin="131,9,0,0" VerticalAlignment="Top" Width="113" Grid.Row="3" FontSize="20" FontFamily="Arial Black" Grid.Column="2"/>
         <ProgressBar Value="{Binding BarProgress}" HorizontalAlignment="Left" Height="20" Margin="91,0,0,0" VerticalAlignment="Center" Width="250" Minimum="0" Maximum="100" Grid.ColumnSpan="2" Grid.Row="3" Grid.Column="1"/>
-        <Label Content="Progress" HorizontalAlignment="Left" Height="40" Margin="6,11,0,0" VerticalAlignment="Top" Width="120" FontSize="20" FontFamily="Arial Black" Grid.Row="3" Grid.ColumnSpan="2"/>
-        <Button Content="Set media folder" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="23,11,0,0" VerticalAlignment="Top" Width="172" FontSize="18" Click="Button_Click_3" IsCancel="True"/>
+        <Button Content="Set media folder" Command="{Binding BtnDir}" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="23,11,0,0" VerticalAlignment="Top" Width="172" FontSize="18"  IsCancel="True"/>
         <TextBox Grid.Column="2" HorizontalAlignment="Left" Height="35" Margin="5,0,0,0" Text="{Binding Dir}" TextWrapping="Wrap" VerticalAlignment="Center" Width="235" FontSize="10"/>
     </Grid>
 </Window>

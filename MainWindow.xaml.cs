@@ -1,31 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Microsoft.Win32;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Net;
-using System.Text.RegularExpressions;
-using System.Net.Http;
-using System.Runtime.CompilerServices;
-//using PronunDLengine;
-using System.Diagnostics;
-using System.Security.Policy;
-using PronunEngine;
-using MSAPI = Microsoft.WindowsAPICodePack;
+﻿using System.Windows;
 
 namespace PronunDLWPF
 {
@@ -35,7 +8,6 @@ namespace PronunDLWPF
     public partial class MainWindow : Window
     {
         //public static HttpClient client = new HttpClient();
-        Boolean isCancel;
         public processViewModel vm=new processViewModel();
 
         public MainWindow()
@@ -43,68 +15,6 @@ namespace PronunDLWPF
             InitializeComponent();
             this.DataContext = vm;
             vm.Dir= @"C:\Users\naobaby\Desktop\test\";
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var fd = new OpenFileDialog();
-
-            fd.FileName = "";
-            fd.DefaultExt = "*.*";
-            if (fd.ShowDialog() == true)
-            {
-                vm.Fn = fd.FileName;
-            }
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            doneBtn.IsEnabled = false;
-            fntreat();
-        }
-
-        public async void fntreat()
-        {
-            //label1.Content = "Processing";
-            vm.Status = "Processing";
-            var LoadFileData = new fileData(vm.Fn);
-            var num_treat = 0;
-            var num_gross = LoadFileData.Fdata.Count;
-            var linedata = new ID_data();
-            foreach (var values in LoadFileData.Fdata)
-            {
-                linedata.Line = values;
-                values[3] = linedata.treatMp3(vm.Dir);
-
-                values[4] = linedata.treatSym();
-
-                num_treat = num_treat + 1;
-                vm.BarProgress = num_treat*100 / num_gross ;
-                vm.Progress = $"{vm.BarProgress}%";
-
-                //vm.Progress = $"{num_treat} in {num_gross}";
-
-
-                if (isCancel)
-                {
-                    break;
-                }
-
-                if (num_treat < num_gross)
-                {
-                    await Task.Delay(1000);
-                }
-            }
-
-            vm.Status = "Writing data in file";
-            LoadFileData.writeData();
-            vm.Status= "Complete";
-            doneBtn.IsEnabled = true;
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            isCancel = true;
         }
 
         private void Window_PreviewDragOver(object sender, DragEventArgs e)
@@ -120,25 +30,6 @@ namespace PronunDLWPF
             if (files != null)
             {
                 vm.Fn = files[0];// パス文字列からファイル名を抜き出して、テキストボックスにファイル名を書き込む。
-            }
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            var dlg = new MSAPI::Dialogs.CommonOpenFileDialog();
-
-            // フォルダ選択ダイアログ（falseにするとファイル選択ダイアログ）
-            dlg.IsFolderPicker = true;
-            // タイトル
-            dlg.Title = "フォルダを選択してください";
-            // 初期ディレクトリ
-            dlg.InitialDirectory = @"C:\Work";
-
-
-            if (dlg.ShowDialog() == MSAPI::Dialogs.CommonFileDialogResult.Ok)
-            {
-                vm.Dir = dlg.FileName+@"\";
-                //MessageBox.Show($"{dlg.FileName}が選択されました。");
             }
         }
     }
