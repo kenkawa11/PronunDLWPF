@@ -2,9 +2,23 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.IO;
+using System.Collections.Generic;
 
 namespace PronunDLWPF
 {
+    public class dict_all
+    {
+        private static ox oxford = new ox();
+        private static ldo longman = new ldo();
+        private static webl weblio = new webl();
+        public static eiji eijiro = new eiji();
+
+        public static List<baseDic> allmp3 = new List<baseDic>
+        {
+            oxford,longman,weblio
+        };
+    }
+
     public class baseDic
     {
         public static HttpClient client = new HttpClient();

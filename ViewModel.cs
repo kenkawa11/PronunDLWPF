@@ -76,7 +76,6 @@ namespace PronunDLWPF
             {
                 this.progress = value;
                 NotifyPropertyChanged("Progress");
-
             }
         }
 
@@ -90,7 +89,6 @@ namespace PronunDLWPF
             {
                 this.barProgress = value;
                 NotifyPropertyChanged("BarProgress");
-
             }
         }
 
@@ -105,7 +103,6 @@ namespace PronunDLWPF
             {
                 this.isCancel = value;
                 NotifyPropertyChanged("IsCancel");
-
             }
         }
 
@@ -120,7 +117,6 @@ namespace PronunDLWPF
             {
                 this.isActiveDone = value;
                 NotifyPropertyChanged("IsActiveDone");
-
             }
         }
 
@@ -136,9 +132,6 @@ namespace PronunDLWPF
         private DelegateCommand _cancel;
         private DelegateCommand _btnFile;
         private DelegateCommand _btnDir;
-        /// <summary>
-        /// クリアコマンドを取得します。
-        /// </summary>
         public DelegateCommand Readprocess
         {
             get
@@ -147,6 +140,7 @@ namespace PronunDLWPF
                 {
                     this._readprocess = new DelegateCommand(_ =>
                     {
+                        this.IsActiveDone = false;
                         fntreat();
                     });
                 }
@@ -235,7 +229,6 @@ namespace PronunDLWPF
 
         private async void fntreat()
         {
-            this.IsActiveDone = false;
             this.Status = "Processing";
             int num_treat;
             var LoadFileData = new fileData(fn);

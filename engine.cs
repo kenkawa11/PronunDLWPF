@@ -9,10 +9,14 @@ namespace PronunDLWPF
 {
     public class fileData
     {
+        /*
         public static ox oxford = new ox();
         public static ldo longman = new ldo();
         public static webl weblio = new webl();
         public static eiji eijiro = new eiji();
+        */
+
+
 
         private List<string> line;
         public int Progress { get; set; }
@@ -94,29 +98,19 @@ namespace PronunDLWPF
             var target_word = line[2];
             target_word = target_word.Trim().Replace(" ", "+");
             line[0] = "TRKW-" + target_word;
-
             if (line[3] == "n")
             {
                 var outpath = dir + line[0];
-                if (oxford.DownLoadMp3(target_word, outpath) != "0")
+                foreach (var dic in dict_all.allmp3)
                 {
-                    line[3] = "A";
-                    return;
+                    if (dic.DownLoadMp3(target_word, outpath) != "0")
+                    {
+                        line[3] = "A";
+                        return;
+                    }
                 }
-                if (longman.DownLoadMp3(target_word, outpath) != "0")
-                {
-                    line[3] = "A";
-                    return;
-                }
-                if (weblio.DownLoadMp3(target_word, outpath) != "0")
-                {
-                    line[3] = "A";
-                    return;
-                }
-                return;
             }
             return;
-
         }
 
         public void treatSym()
@@ -126,7 +120,7 @@ namespace PronunDLWPF
                 var target_word = line[2];
                 target_word = target_word.Trim().Replace(" ", "+");
                 target_word = "search?q=" + target_word;
-                var temp = eijiro.DownLoadSymbol(target_word);
+                var temp = dict_all.eijiro.DownLoadSymbol(target_word);
                 if (temp == "0")
                 {
                     return;
