@@ -2,7 +2,6 @@ C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\PronunDLWPF.cs
 C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\App.g.cs
 C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\PronunDLWPF_MarkupCompile.cache
-C:\Users\naobaby\source\repos\PronunDLWPF\obj\Debug\netcoreapp3.1\PronunDLWPF_MarkupCompile.lref
 C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\PronunDLWPF.exe
 C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\PronunDLWPF.deps.json
 C:\Users\naobaby\source\repos\PronunDLWPF\bin\Debug\netcoreapp3.1\PronunDLWPF.runtimeconfig.json
