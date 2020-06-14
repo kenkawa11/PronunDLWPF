@@ -10,7 +10,7 @@ using System.Windows;
 namespace PronunDLWPF
 {
 
-    public class processViewModel : INotifyPropertyChanged
+    public class ProcessViewModel : INotifyPropertyChanged
     {
         private string status;
         private string progress;
@@ -20,7 +20,7 @@ namespace PronunDLWPF
         private Boolean isCancel;
         private Boolean isActiveDone;
 
-        public processViewModel()
+        public ProcessViewModel()
         {
             isCancel = false;
             isActiveDone = true;
@@ -125,10 +125,7 @@ namespace PronunDLWPF
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(String info)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(info));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(info));
         }
         private DelegateCommand _readprocess;
         private DelegateCommand _cancel;
@@ -145,7 +142,7 @@ namespace PronunDLWPF
                         if(fn!=null)
                         {
                             this.IsActiveDone = false;
-                            fntreat();
+                            Fntreat();
                         }
                         else
                         {
@@ -181,7 +178,7 @@ namespace PronunDLWPF
                 {
                     this._btnFile = new DelegateCommand(_ =>
                     {
-                        selectFile();
+                        SelectFile();
                     });
                 }
                 return this._btnFile;
@@ -197,35 +194,38 @@ namespace PronunDLWPF
                 {
                     this._btnDir = new DelegateCommand(_ =>
                     {
-                        selectDir();
+                        SelectDir();
                     });
                 }
                 return this._btnDir;
             }
         }
 
-        private void selectFile()
+        private void SelectFile()
         {
-            var fd = new OpenFileDialog();
-
-            fd.FileName = "";
-            fd.DefaultExt = "*.*";
+            var fd = new OpenFileDialog
+            {
+                FileName = "",
+                DefaultExt = "*.*"
+            };
             if (fd.ShowDialog() == true)
             {
                 Fn = fd.FileName;
             }
         }
 
-        private void selectDir()
+        private void SelectDir()
         {
-            var dlg = new MSAPI::Dialogs.CommonOpenFileDialog();
+            var dlg = new MSAPI::Dialogs.CommonOpenFileDialog
+            {
 
-            // フォルダ選択ダイアログ（falseにするとファイル選択ダイアログ）
-            dlg.IsFolderPicker = true;
-            // タイトル
-            dlg.Title = "フォルダを選択してください";
-            // 初期ディレクトリ
-            dlg.InitialDirectory = @"C:\Work";
+                // フォルダ選択ダイアログ（falseにするとファイル選択ダイアログ）
+                IsFolderPicker = true,
+                // タイトル
+                Title = "フォルダを選択してください",
+                // 初期ディレクトリ
+                InitialDirectory = @"C:\Work"
+            };
 
 
             if (dlg.ShowDialog() == MSAPI::Dialogs.CommonFileDialogResult.Ok)
@@ -236,14 +236,14 @@ namespace PronunDLWPF
         }
 
 
-        private async void fntreat()
+        private async void Fntreat()
         {
             this.Status = "Processing";
             int num_treat;
-            var LoadFileData = new fileData(fn);
+            var LoadFileData = new FileData(fn,dir);
             var num_gross = LoadFileData.Fdata.Count;
 
-            var t1 = LoadFileData.treatData(Dir);
+            var t1 = LoadFileData.TreatData();
 
             while (!t1.IsCompleted)
             {
@@ -257,7 +257,7 @@ namespace PronunDLWPF
                 await Task.Delay(100);
             }
             Status = "Writing data in file";
-            LoadFileData.writeData();
+            LoadFileData.WriteData();
 
             if (isCancel)
             {
@@ -273,8 +273,8 @@ namespace PronunDLWPF
     }
     public class DelegateCommand : ICommand
     {
-        private Action<object> _execute;
-        private Func<object, bool> _canExecute;
+        private readonly Action<object> _execute;
+        private readonly Func<object, bool> _canExecute;
         public DelegateCommand(Action<object> execute)
         : this(execute, null)
         {
@@ -287,19 +287,18 @@ namespace PronunDLWPF
         }
         public bool CanExecute(object parameter)
         {
-            return (this._canExecute != null) ? this._canExecute(parameter) : true;
+            return this._canExecute == null || this._canExecute(parameter);
         }
 
         public event EventHandler CanExecuteChanged;
         public void RaiseCanExecuteChanged()
         {
-            var h = this.CanExecuteChanged;
-            if (h != null) h(this, EventArgs.Empty);
+            this.CanExecuteChanged?.Invoke(this, EventArgs.Empty);
         }
         public void Execute(object parameter)
         {
             if (this._execute != null)
-                this._execute(parameter);
+                _execute(parameter);
         }
     }
 

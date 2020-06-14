@@ -7,7 +7,7 @@ using System.IO;
 
 namespace PronunDLWPF
 {
-    public class fileData
+    public class FileData
     {
         /*
         public static ox oxford = new ox();
@@ -17,12 +17,12 @@ namespace PronunDLWPF
         */
 
 
+        private string rfn;
+        private string dir;
 
         private List<string> line;
         public int Progress { get; set; }
         private List<List<string>> fdata = new List<List<string>>();
-        public string Rfn { get; set; }
-        private int dataNum { get; set; }
         public List<List<string>> Fdata
         {
             get
@@ -35,65 +35,60 @@ namespace PronunDLWPF
             }
         }
 
-        public fileData(string rfn)
+        public FileData(string a, string b)
         {
-            Rfn = rfn;
+            rfn=a;
+            dir=b;
             string line;
             String[] readLine;
 
-            using (StreamReader sr = new StreamReader(rfn))
+            using StreamReader sr = new StreamReader(rfn);
+            while (!sr.EndOfStream) //csvファイルをリストに読み込む
             {
-
-                while (!sr.EndOfStream) //csvファイルをリストに読み込む
-                {
-                    // CSVファイルの一行を読み込む
-                    List<string> stringList = new List<string>();
-                    line = sr.ReadLine();
-                    // 読み込んだ一行をカンマ毎に分けて配列に格納する
-                    readLine = line.Split(',');
-                    stringList.AddRange(readLine);
-                    Fdata.Add(stringList);
-                    readLine = null;
-                }
+                // CSVファイルの一行を読み込む
+                List<string> stringList = new List<string>();
+                line = sr.ReadLine();
+                // 読み込んだ一行をカンマ毎に分けて配列に格納する
+                readLine = line.Split(',');
+                stringList.AddRange(readLine);
+                Fdata.Add(stringList);
+                readLine = null;
             }
-
-            dataNum = Fdata.Count;
         }
 
-        public void writeData()
+        public void WriteData()
         {
             string line = null;
-            using (StreamWriter file = new StreamWriter(this.Rfn, false, Encoding.UTF8))
+            using StreamWriter file = new StreamWriter(rfn, false, Encoding.UTF8);
+            foreach (var v in Fdata)
             {
-                foreach (var v in this.Fdata)
+                foreach (var u in v)
                 {
-                    foreach (var u in v)
-                    {
-                        line += u;
-                        line += ",";
-                    }
-                    line = line.Substring(0, line.Length - 1);
-                    file.WriteLine(line);
-                    line = null;
+                    line += u;
+                    line += ",";
                 }
+                line = line[0..^1];
+                //line = line.Substring(0, line.Length - 1);
+                file.WriteLine(line);
+                line = null;
             }
         }
 
-        public async Task<bool> treatData(string Dir)
+        public async Task<bool> TreatData()
         {
             Progress = 0;
             foreach (var values in Fdata)
             {
                 line= values;
-                treatMp3(Dir);
-                treatSym();
+                TreatMp3();
+                TreatSym();
                 Progress++;
                 await Task.Delay(1000);
             }
             return true;
 
         }
-        public void treatMp3(string dir)
+        public void TreatMp3()
         {
             var target_word = line[2];
             target_word = target_word.Trim().Replace(" ", "+");
@@ -113,7 +108,7 @@ namespace PronunDLWPF
             return;
         }
 
-        public void treatSym()
+        public void TreatSym()
         {
             if (line[4] == "n")
             {
