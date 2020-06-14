@@ -241,7 +241,7 @@ namespace PronunDLWPF
             this.Status = "Processing";
             int num_treat;
             var LoadFileData = new FileData(fn,dir);
-            var num_gross = LoadFileData.Fdata.Count;
+            var num_gross = LoadFileData.Count;
 
             var t1 = LoadFileData.TreatData();
 
