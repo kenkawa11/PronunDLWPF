@@ -6,38 +6,38 @@ using System.Collections.Generic;
 
 namespace PronunDLWPF
 {
-    public class dict_all
+    public class Dict_all
     {
-        private static ox oxford = new ox();
-        private static ldo longman = new ldo();
-        private static webl weblio = new webl();
-        public static eiji eijiro = new eiji();
+        private static readonly Ox oxford = new Ox();
+        private static readonly Ldo longman = new Ldo();
+        private static readonly Webl weblio = new Webl();
+        public static Eiji eijiro = new Eiji();
 
-        public static List<baseDic> allmp3 = new List<baseDic>
+        public static List<BaseDic> allmp3 = new List<BaseDic>
         {
             oxford,longman,weblio
         };
     }
 
-    public class baseDic
+    public class BaseDic
     {
         public static HttpClient client = new HttpClient();
-        public string url { get; set; }
-        public string ptn { get; set; }
+        public string Url { get; set; }
+        public string Ptn { get; set; }
 
         public virtual string DownLoadMp3(string w, string outpath)
         {
-            var bodyUrl = url + w;
-            var url_mp3 = get_body(bodyUrl, ptn).Result;
+            var bodyUrl = Url + w;
+            var url_mp3 = Get_body(bodyUrl, Ptn).Result;
             if (url_mp3 == "0")
             {
                 return "0";
             }
-            get_mp3(url_mp3, outpath);
+            Get_mp3(url_mp3, outpath);
             return "1";
         }
 
-        public static async Task<string> get_body(string url, string ptn)
+        public static async Task<string> Get_body(string url, string ptn)
         {
             try
             {
@@ -51,28 +51,24 @@ namespace PronunDLWPF
                 }
                 return "0";
             }
-            catch (HttpRequestException e)
+            catch (HttpRequestException)
             {
                 return "0";
             }
         }
-        public static async void get_mp3(string url_mp3, string outpath)
+        public static async void Get_mp3(string url_mp3, string outpath)
         {
             HttpResponseMessage res = await client.GetAsync(url_mp3);
             var outputPath = outpath + ".mp3";
-            using (var fileStream = File.Create(outputPath))
-            {
-                using (var httpStream = await res.Content.ReadAsStreamAsync())
-                {
-                    httpStream.CopyTo(fileStream);
-                    fileStream.Flush();
-                }
-            }
+            using FileStream fileStream = File.Create(outputPath);
+            using var httpStream = await res.Content.ReadAsStreamAsync();
+            httpStream.CopyTo(fileStream);
+            fileStream.Flush();
         }
         public string DownLoadSymbol(string w)
         {
-            var bodyUrl = url + w;
-            var url_symbol = get_body(bodyUrl, ptn).Result;
+            var bodyUrl = Url + w;
+            var url_symbol = Get_body(bodyUrl, Ptn).Result;
             if (url_symbol == "0")
             {
                 return "0";
@@ -84,51 +80,52 @@ namespace PronunDLWPF
     }
 
 
-    public class ox : baseDic
+    public class Ox : BaseDic
     {
-        public ox()
+        public Ox()
         {
-            url = "https://www.oxfordlearnersdictionaries.com/definition/english/";
-            ptn = "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/.+?mp3";
+            Url = "https://www.oxfordlearnersdictionaries.com/definition/english/";
+            Ptn = "https://www.oxfordlearnersdictionaries.com/media/english/us_pron/.+?mp3";
         }
     }
 
-    public class ldo : baseDic
+    public class Ldo : BaseDic
     {
-        public ldo()
+        public Ldo()
         {
-            url = "https://www.ldoceonline.com/jp/dictionary/";
-            ptn = "https://.+/ameProns/.+?mp3";
+            Url = "https://www.ldoceonline.com/jp/dictionary/";
+            Ptn = "https://.+/ameProns/.+?mp3";
         }
     }
 
-    public class webl : baseDic
+    public class Webl : BaseDic
     {
-        public webl()
+        public Webl()
         {
-            url = "https://ejje.weblio.jp/content/";
-            ptn = "https://weblio.hs.llnwd.net/.+?mp3\"";
+            Url = "https://ejje.weblio.jp/content/";
+            Ptn = "https://weblio.hs.llnwd.net/.+?mp3\"";
         }
         public override string DownLoadMp3(string w, string outpath)
         {
-            var bodyUrl = url + w;
-            var url_mp3 = get_body(bodyUrl, ptn).Result;
+            var bodyUrl = Url + w;
+            var url_mp3 = Get_body(bodyUrl, Ptn).Result;
             if (url_mp3 == "0")
             {
                 return "0";
             }
-            url_mp3 = url_mp3.Substring(0, url_mp3.Length - 1);
-            get_mp3(url_mp3, outpath);
+            url_mp3 = url_mp3[0..^1];
+            //url_mp3 = url_mp3.Substring(0, url_mp3.Length - 1);
+            Get_mp3(url_mp3, outpath);
             return "1";
         }
     }
 
-    public class eiji : baseDic
+    public class Eiji : BaseDic
     {
-        public eiji()
+        public Eiji()
         {
-            url = "https://eow.alc.co.jp/";
-            ptn = "【発音】.+?【カナ】|【発音.+?】.+?【カナ】";
+            Url = "https://eow.alc.co.jp/";
+            Ptn = "【発音】.+?【カナ】|【発音.+?】.+?【カナ】";
         }
     }
 }

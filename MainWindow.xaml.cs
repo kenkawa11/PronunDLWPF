@@ -8,7 +8,7 @@ namespace PronunDLWPF
     public partial class MainWindow : Window
     {
         //public static HttpClient client = new HttpClient();
-        public processViewModel vm=new processViewModel();
+        public ProcessViewModel vm=new ProcessViewModel();
 
         public MainWindow()
         {
