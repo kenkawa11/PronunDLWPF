@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using MSAPI = Microsoft.WindowsAPICodePack;
+using System.Windows;
+
 
 namespace PronunDLWPF
 {
@@ -140,8 +142,15 @@ namespace PronunDLWPF
                 {
                     this._readprocess = new DelegateCommand(_ =>
                     {
-                        this.IsActiveDone = false;
-                        fntreat();
+                        if(fn!=null)
+                        {
+                            this.IsActiveDone = false;
+                            fntreat();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Select a target file !!!");
+                        }
                     });
                 }
                 return this._readprocess;
