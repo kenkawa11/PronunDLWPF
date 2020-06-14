@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace PronunDLWPF
 {
-    public class Dict_all
+    public static class Dict_all
     {
         private static readonly Ox oxford = new Ox();
         private static readonly Ldo longman = new Ldo();
